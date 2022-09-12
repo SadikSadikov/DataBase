@@ -26,7 +26,7 @@ public class Select {
         }
 
         if(!(list.isEmpty())){
-            int choice;
+            String choice;
             int number = 0;
             System.out.println(name);
             printTables(list,number);
@@ -37,11 +37,11 @@ public class Select {
                 System.out.println("3 - Exit");
                 System.out.println("*************");
                 System.out.print("Enter your choice: ");
-                choice = scanner.nextInt();
+                choice = scanner.nextLine();
                 System.out.println();
 
                 switch (choice) {
-                    case 1:
+                    case "1":
                         if(number < list.size()){
                             System.out.println(name);
                             number+= 2;
@@ -50,7 +50,7 @@ public class Select {
 
 
                         break;
-                    case 2:
+                    case "2":
                         if(number >= 0){
                             System.out.println(name);
                             number-= 2;
@@ -60,7 +60,7 @@ public class Select {
 
                 }
 
-            } while (choice != 3);
+            } while (!(choice.equals("3")));
         }
 
     }

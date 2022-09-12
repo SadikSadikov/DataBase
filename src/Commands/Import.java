@@ -2,16 +2,16 @@ package Commands;
 
 import DataBase.DataBase;
 import Exceptions.InvalidFileName;
-
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 import javax.xml.bind.annotation.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import DataBase.ListTable;
 
-@XmlRootElement(name = "Catalog")
+@XmlRootElement(name = "Table")
 @XmlAccessorType(XmlAccessType.PROPERTY)
 public class Import {
 
@@ -22,18 +22,6 @@ public class Import {
                 insertCatalog();
             }
             else{
-                /*
-                int i = 0;
-                for(String s: DataBase.getDataBaseFile()){
-                    if (fileName.equals(s)){
-                        i++;
-                    }
-                }
-                if(i == 1){
-                    throw new InvalidFileName();
-                }
-
-                 */
                 if(DataBase.getDataBaseFile().contains(fileName)){
                     throw new InvalidFileName();
                 }
@@ -47,7 +35,6 @@ public class Import {
     }
 
     public void insertCatalog() {
-
         try {
             List<String> list = new ArrayList<>();
             for(String s: DataBase.getDataBaseFile()){
@@ -59,7 +46,16 @@ public class Import {
             JAXBContext jc = JAXBContext.newInstance(ListTable.class);
             Marshaller ms = jc.createMarshaller();
             ms.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            ms.marshal(lt, new File("src\\Catalog\\Catalog.xml"));
+            ms.marshal(lt,new File("C:\\Users\\USER\\IdeaProjects\\DataBase\\src\\Catalog\\Catalog.xml"));
+
+            JAXBContext context = JAXBContext.newInstance(ListTable.class);
+            Unmarshaller ums = context.createUnmarshaller();
+            ListTable tables = (ListTable) ums.unmarshal(new File("C:\\Users\\USER\\IdeaProjects\\DataBase\\src\\Catalog\\Catalog.xml"));
+            for(String s:tables.getFileList()){
+                System.out.println("file name: "+s);
+            }
+
+
         }catch (Exception e){
             System.out.println(e);
         }

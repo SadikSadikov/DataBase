@@ -36,12 +36,14 @@ public class Insert {
                         entry.getValue().getRows().add(columnName);
                         entry.getValue().getRows().add(Types.NULL);
                         entry.getValue().getRows().add(value);
+                        entry.getValue().getTypesList().add(Types.NULL);
                     }
                     else{
                         entry.getValue().getRows().add(maxValue+1);
                         entry.getValue().getRows().add(columnNames.get(i));
                         entry.getValue().getRows().add(Types.NULL);
                         entry.getValue().getRows().add("NULL");
+                        entry.getValue().getTypesList().add(Types.NULL);
                     }
 
                 }

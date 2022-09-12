@@ -76,45 +76,4 @@ public class InnerJoin {
         Table table = new Table();
         table.printTable(newTable);
     }
-    /*
-    public void innerJoin(String tableName1,String columnName1, String tableName2,String columnName2) throws IndexOutOfBoundsException{
-        for (Map.Entry<String, Table> entry : DataBase.getDataBase().entrySet()) {
-            if (tableName1.equals(entry.getKey())) {
-                for (int i = 0; i < entry.getValue().getRows().size(); i++) {
-                        if (entry.getValue().getRows().get(i+1).equals(columnName1)) {
-                            table.add(entry.getValue().getRows().get(i));
-                            table.add(entry.getValue().getRows().get(i+1));
-                            table.add(entry.getValue().getRows().get(i+2));
-                            table.add(entry.getValue().getRows().get(i+3));
-                            break;
-                    }
-                }
-            }
-        }
-
-        for (Map.Entry<String, Table> entry : DataBase.getDataBase().entrySet()) {
-            if (tableName2.equals(entry.getKey())) {
-                for (int i = 0; i < entry.getValue().getRows().size(); i++) {
-                        if (entry.getValue().getRows().get(i+1).equals(columnName2)) {
-                            table.add(entry.getValue().getRows().get(i));
-                            table.add(entry.getValue().getRows().get(i+1));
-                            table.add(entry.getValue().getRows().get(i+2));
-                            table.add(entry.getValue().getRows().get(i+3));
-                            break;
-                    }
-                }
-            }
-        }
-        int sum = 8;
-
-        if(table.size() == sum){
-            Table tablePrint = new Table();
-            tablePrint.printTable(table);
-        }
-        else{
-            System.out.println("Invalid number");
-        }
-    }
-
-*/
 }

@@ -14,28 +14,34 @@ import java.util.Map;
 
 public class Export {
 
-    public void export(String fileName,String tableName) {
+    public void export(String fileName,String tableName,FileCommands fileCommands) {
         List<Types> typesList = new ArrayList<>();
-
                 try{
                     for (Map.Entry<String, Table> entry : DataBase.getDataBase().entrySet()) {
                         if(tableName.equals(entry.getKey())){
                             for(Types t:entry.getValue().getTypesList()){
                                     typesList.add(t);
                             }
+                            ListTable lt = new ListTable();
+                            lt.setTypesList(typesList);
+                            fileCommands.fileCommands("C:\\Files\\"+fileName);
+                            if(fileCommands.isCloseOrSave()){
+                                JAXBContext jc = JAXBContext.newInstance(ListTable.class);
+                                Marshaller ms = jc.createMarshaller();
+                                ms.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+                                if(!(fileCommands.getPathName().equals(""))){
+                                    ms.marshal(lt,new File(fileCommands.getPathName()));
+                                    DataBase.getFiles().add(fileCommands.getPathName());
+                                    fileCommands.setPathName("");
+                                    System.out.println("Successfully exported");
+                                }
+
+                            }
                         }
 
-
-                        ListTable lt = new ListTable();
-                        lt.setTypesList(typesList);
-                        JAXBContext jc = JAXBContext.newInstance(ListTable.class);
-                        Marshaller ms = jc.createMarshaller();
-                        ms.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-                        ms.marshal(lt, new File("src\\Data\\" + fileName));
-
                     }
-                    System.out.println("Successfully exported");
-                    DataBase.getFiles().add(fileName);
+
+
                 }
                 catch (Exception e){
                     System.out.println(e);

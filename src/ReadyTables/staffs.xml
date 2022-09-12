@@ -163,10 +163,10 @@
         <value>2000.10</value>
     </Column>
     <Column>
-        <idColumn>1</idColumn>
+        <idColumn>4</idColumn>
         <columnName>store_id</columnName>
         <types>INT</types>
-        <value>1</value>
+        <value>4</value>
     </Column>
 
 </Table>

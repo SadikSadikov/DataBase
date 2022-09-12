@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Print {
 
     public void print(String tableName) {
-        int choice;
+        String choice;
         int number = 2;
 
         Scanner scanner = new Scanner(System.in);
@@ -24,26 +24,28 @@ public class Print {
                         System.out.println("3 - Exit");
                         System.out.println("*************");
                         System.out.print("Enter your choice: ");
-                        choice = scanner.nextInt();
+                        choice = scanner.nextLine();
                         System.out.println();
 
                         switch (choice) {
-                            case 1:
+                            case "1":
                                 if(number <= maxValue) {
                                     number += 2;
                                     entry.getValue().printTables(entry.getValue().getRows(), number);
+                                    System.out.println();
                                 }
                                 break;
-                            case 2:
+                            case "2":
                                 if(number > 0){
                                     number-= 2;
                                     entry.getValue().printTables(entry.getValue().getRows(),number);
+                                    System.out.println();
                                 }
                                 break;
 
                         }
 
-                    } while (choice != 3);
+                    } while (!(choice.equals("3")));
 
             }
 

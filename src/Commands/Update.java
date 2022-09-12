@@ -12,12 +12,14 @@ public class Update {
                         if(entry.getValue().getRows().get(i).equals(searchIdColumn)){
                             if (entry.getValue().getRows().get(i+1).equals(searchColumnName)) {
                                entry.getValue().getRows().set(i+3,entry.getValue().determinationValue((Types) entry.getValue().getRows().get(i+2),targetValue));
+                                System.out.println("Successfully");
                             }
 
                         }
 
                     }
-                    entry.getValue().printAllTables(entry.getValue().getRows());
+                    entry.getValue().printTable(entry.getValue().getRows());
+                    System.out.println();
                 }
            }
     }

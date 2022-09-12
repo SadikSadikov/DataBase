@@ -23,6 +23,7 @@ public class AddColumn {
                 entry.getValue().getTypesList().add(types);
                 entry.getValue().getRows().add("NULL");
                 entry.getValue().printTable(entry.getValue().getRows());
+                System.out.println("Successfully");
             }
         }
     }

@@ -14,7 +14,6 @@ public class Describe {
                 for(Types t:entry.getValue().getTypesList()){
                     System.out.println(t);
                 }
-
                 return;
             }
 

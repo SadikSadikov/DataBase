@@ -25,7 +25,7 @@
         <value>0893333333</value>
     </Column>
     <Column>
-        <idColumn>2</idColumn>
+        <idColumn>1</idColumn>
         <columnName>street</columnName>
         <types>STRING</types>
         <value>China Street</value>
